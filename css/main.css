@@ -1,0 +1,182 @@
+/*管理index.html的主要css样式*/
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
+body{
+	background-color: #fff;
+	color: #555;
+	font-family: 'Avenir Next','Lantinghei SC';
+	font-size: 14px;
+	-webkit-font-smoothing: antialiased;   /*chrome、safari*/
+	-moz-osx-font-smoothing: grayscale;    /*firefox*/
+}
+
+.wrap{
+	width: 100%;
+	height: 600px;
+	position: absolute;
+	top: 50%;
+	margin-top: -300px;
+	background-color: #333;
+	overflow: hidden;
+}
+
+.photo{
+	left: 50%;
+	top: 50%;
+	margin: -112px 0 0 -200px;
+	z-index: 999;
+	width: 400px;
+	height: 244px;
+	position: absolute;
+	z-index: 1;
+	box-shadow: 1px 1px 6px rgba(0,0,0,.1);
+	-webkit-box-shadow: 1px 1px 6px rgba(0,0,0,.1);
+	perspective: 800px;
+	-webkit-perspective: 800px;
+	transition: all 1s;
+	-webkit-transition: all 1s;
+	cursor: pointer;
+}
+
+.photo .side{
+	width: 100%;
+	height: 100%;
+	background-color: #eee;
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 20px;
+	box-sizing: border-box;
+}
+
+.photo .side_front{}
+.photo .side_front .image{
+	width: 100%;
+	height: 184px;
+	line-height: 184px;
+	overflow: hidden; 
+}
+.photo .side_front .image img{
+	width: 100%;
+}
+.photo .side_front .caption{
+	text-align: center;
+	font-size: 14px;
+	line-height: 40px;
+}
+.photo .side_back{
+	/*display: none;*/
+}
+.photo .side_back .desc{
+	color: #666;
+	font-size: 14px;
+	line-height: 1.5em;
+}
+
+/*当前选中的photo样式*/
+.photo_center{
+	left: 50%;
+	top: 50%;
+	margin: -112px 0 0 -200px;
+	z-index: 999 !important;
+}
+
+/*负责3D翻转*/
+.photo_wrap{
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	transform-style: preserve-3d;
+	-webkit-transform-style: preserve-3d;     /* Safari and Chrome */
+	transition: all .6s;
+	-webkit-transition: all .6s;
+	transform-origin: 0% 50%;
+	-webkit-transform-origin: 0% 50%;
+}
+.photo_wrap .side_front{
+	transform: rotateY(0deg);
+	-webkit-transform: rotateY(0deg);
+}
+.photo_wrap .side_back{
+	transform: rotateY(180deg);
+	-webkit-transform: rotateY(180deg);
+}
+.photo_wrap .side{
+	backface-visibility: hidden;
+	-webkit-backface-visibility: hidden;
+}
+
+.photo_front .photo_wrap{
+	transform: rotateY(0deg) translate(0px,0px);
+	-webkit-transform: rotateY(0deg) translate(0px,0px);
+}
+.photo_back .photo_wrap{
+	transform: rotateY(180deg) translate(-400px,0px);
+	-webkit-transform: rotateY(180deg) translate(-400px,0px);
+}
+
+/*控制按钮的样式*/
+@font-face{
+	font-family: 'icons';
+	src: url('../fonts/icons.woff') format('woff');
+	font-weight: normal;
+}
+.nav{
+	width: 50%;
+	height: 30px;
+	line-height: 30px;
+	position: absolute;
+	left: 25%;
+	bottom: 20px;
+	z-index: 999;
+	text-align: center;
+}
+
+/*nav普通样式*/
+.nav .i{
+	width: 30px;
+	height: 30px;
+	display: inline-block;
+	cursor: pointer;
+	background-color: #aaa;
+	text-align: center;
+	border-radius: 50%;
+	transform:scale(.48);
+	-webkit-transform:scale(.48);
+	transition: all .5s;
+	-webkit-transition: all .5s;
+}
+.nav .i:after{
+	content: "\e600";
+	font-family: "icons";
+	font-size: 80%;
+	display: inline-block;
+	line-height: 30px;
+	text-align: center;
+	color: #fff;
+	opacity: 0;
+}
+/*当前i样式*/
+.nav .i_current{
+	transform:scale(1);
+	-webkit-transform:scale(1);
+}
+.nav .i_current:after{
+	opacity: 1;
+}
+/*背面样式*/
+.nav .i_back{
+	transform: rotateY(-180deg);
+	-webkit-transform: rotateY(-180deg);
+	background-color: #555;
+}
+
+
+
+
+
+
