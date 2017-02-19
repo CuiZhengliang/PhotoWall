@@ -26,6 +26,7 @@ function addPhotos(){
 	for (var i = 0; i < data.length; ++i) {
 		var _html = template
 						.replace('{{index}}',i)
+						.replace('_src','src')    //修复src路径解析报错的问题
 						.replace('{{img}}',data[i].img)
 						.replace('{{caption}}',data[i].caption)
 						.replace('{{desc}}',data[i].desc);
@@ -102,21 +103,23 @@ function rsort(n){
 	var _range = range();
 	for ( s in photos_left ) {
 		var photoOfLeft = photos_left[s];
-		var leftY = randomPhoto( _range.left.y );
-		var leftX = _wrapModel.w/2 - Math.sqrt(160000-(Math.pow(leftY-_wrapModel.h/2,2) ) );
-		photoOfLeft.style.left = leftX + 'px';
-		photoOfLeft.style.top  = leftY + 'px';
-		photoOfLeft.style['transform']         = 'rotate(' + randomPhoto([-45,45]) + 'deg) scale(.6)';
-		photoOfLeft.style['-webkit-transform'] = 'rotate(' + randomPhoto([-45,45]) + 'deg) scale(.6)';
+		// var leftY = randomPhoto( _range.left.y );
+		// var leftX = _wrapModel.w/2 - Math.sqrt(160000-(Math.pow(leftY-_wrapModel.h/2,2) ) );
+		// var angleLeft = Math.atan(leftY-);
+
+		// photoOfLeft.style.left = leftX + 'px';
+		// photoOfLeft.style.top  = leftY + 'px';
+		photoOfLeft.style['transform']         = 'rotate(' + randomPhoto([-30,30]) + 'deg) scale(.6) translate(800px)';
+		photoOfLeft.style['-webkit-transform'] = 'rotate(' + randomPhoto([-30,30]) + 'deg) scale(.6) translate(800px)';
 	}
 	for ( s in photos_right ) {
 		var photoOfRight = photos_right[s];
-		var rightY = randomPhoto( _range.right.y );
-		var rightX = _wrapModel.w/2 + Math.sqrt(160000-(Math.pow(rightY-_wrapModel.h/2,2) ) );
-		photoOfRight.style.left = rightX + 'px';
-		photoOfRight.style.top  = rightY + 'px';
-		photoOfRight.style['transform']         = 'rotate(' + randomPhoto([-45,45]) + 'deg) scale(.6)';
-		photoOfRight.style['-webkit-transform'] = 'rotate(' + randomPhoto([-45,45]) + 'deg) scale(.6)';
+		// var rightY = randomPhoto( _range.right.y );
+		// var rightX = _wrapModel.w/2 + Math.sqrt(160000-(Math.pow(rightY-_wrapModel.h/2,2) ) );
+		// photoOfRight.style.left = rightX + 'px';
+		// photoOfRight.style.top  = rightY + 'px';
+		photoOfRight.style['transform']         = 'rotate(' + randomPhoto([-30,30]) + 'deg) scale(.6) translate(-800px)';
+		photoOfRight.style['-webkit-transform'] = 'rotate(' + randomPhoto([-30,30]) + 'deg) scale(.6) translate(-800px)';
 	}
 }
 
